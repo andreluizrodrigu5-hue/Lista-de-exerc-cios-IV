@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+struct Aluno {
+    char nome[50];
+    int idade;
+    float nota;
+};
+
+int main() {
+    struct Aluno alunos[5];
+    int i, indice;
+
+    for(i = 0; i < 5; i++) {
+        scanf("%s", alunos[i].nome);
+        scanf("%d", &alunos[i].idade);
+        scanf("%f", &alunos[i].nota);
+    }
+
+    scanf("%d", &indice);
+    scanf("%f", &alunos[indice].nota);
+
+    printf("%s %d %.2f\n", alunos[indice].nome, alunos[indice].idade, alunos[indice].nota);
+
+    return 0;
+}
