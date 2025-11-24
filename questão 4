@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+struct Aluno {
+    char nome[50];
+    int idade;
+    float nota;
+};
+
+void exibir(struct Aluno a) {
+    printf("%s %d %.2f\n", a.nome, a.idade, a.nota);
+}
+
+struct Aluno criar() {
+    struct Aluno a;
+    scanf("%s", a.nome);
+    scanf("%d", &a.idade);
+    scanf("%f", &a.nota);
+    return a;
+}
+
+int main() {
+    struct Aluno alunos[4];
+    int qtd = 0;
+    int op, i, remover;
+
+    do {
+        scanf("%d", &op);
+
+        if(op == 1) {
+            if(qtd < 4) {
+                alunos[qtd] = criar();
+                qtd++;
+            }
+        }
+
+        if(op == 2) {
+            scanf("%d", &remover);
+            if(remover >= 0 && remover < qtd) {
+                for(i = remover; i < qtd - 1; i++) {
+                    alunos[i] = alunos[i + 1];
+                }
+                qtd--;
+            }
+        }
+
+        if(op == 3) {
+            for(i = 0; i < qtd; i++) {
+                exibir(alunos[i]);
+            }
+        }
+
+    } while(op != 0);
+
+    return 0;
+}
